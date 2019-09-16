@@ -1,0 +1,5 @@
+{"mongo-MongoAnna":{"name":"MongoAnna","host":"localhost","port":"27017","dbname":"testdb","user":"testuser","password":"1q2w3e4r5t","type":"mongo","connected":false},
+"rabbitmq-RabbitAnna":{"name":"RabbitAnna","host":"localhost","port":"5672","dbname":"","user":"","type":"rabbitmq","connected":true},
+"redis-RedisAnna":{"name":"RedisAnna","host":"localhost","port":"6379","dbname":"","user":"","password":"mytestpassword","type":"redis","connected":true}
+
+}

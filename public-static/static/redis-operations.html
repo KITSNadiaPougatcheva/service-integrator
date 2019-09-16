@@ -1,0 +1,62 @@
+<div class="container request p-3 mb-2 bg-light text-dark">
+	<table class="table table-sm">
+		<tr>
+			<td><div class="data-source"></div></td>
+			<td><div class="service-type"></div></td>
+		</tr>
+		<tr>
+			<td><div class="connection-state"></div></td>
+			<td><div class="db-name"></div></td>
+		</tr>
+		<tr><td colspan="2">
+			<form id="setRedisValue" class="setRedisValue" action="#" method="post">
+					<table width="100%">
+						<tr><td style="white-space:nowrap;"><b>Specify key - value pair : </b></td>
+							<td style="width:100%;"><input type="submit" name="send" class="submit-btn" value="Run"></td>
+						</tr>
+						<tr><td colspan="2">Key : <input type="text" name="key" class="key" placeholder="key"/></td></tr>
+						<tr><td colspan="2">Value : <input type="text" name="value" class="value"  placeholder="value"/></td></tr>
+						<tr><td colspan="2">Ex. (EX | PX | NX | XX) : <input type="text" name="ex" class="ex"  placeholder="Ex"/></td></tr>
+						<tr><td colspan="2">Time in seconds for EX, millis for PX : <input type="text" name="time" class="time"  placeholder="10"/></td></tr>
+						<tr><td colspan="2"><span id="setQueryResult"></span></td></tr>
+					</table>
+				</form>
+		</td></tr>
+		<tr> <td colspan="2">
+			<form id="commandRedis" class="commandRedis" action="#" method="post">
+					<table width="100%">
+						<tr><td ><b style="white-space:nowrap;">Specify command : </b></td>
+							<td style="width:100%;"><input type="submit" name="send" class="submit-btn" value="Run"></td>
+						</tr>
+						<tr><td colspan="2">Command : <input type="text" name="command" class="command" placeholder="key"/></td></tr>
+						<tr><td colspan="2">Params (array of params e.g. ["some other key", "some val"]) : 
+						<textarea name="params" class="form-control params" placeholder='["some other key", "some val"]'></textarea>
+						</td></tr>
+						<tr><td><a href="https://redis.io/commands"  target="_blank"><span style="white-space:nowrap;">>> Redis Commands for ref.</span></a></td><td style="width:100%">| <span id="commandRedisResult">Results :</span></td></tr>
+					</table>
+				</form>
+		</td></tr>
+		<tr><td colspan="2">
+			<form id="loadRedisValue" class="loadRedisValue" action="#" method="post">
+				<table  width="100%">
+					<tr><td style="white-space:nowrap;"><b>Get key - value pair : </b></td>
+						<td style="width:100%;"><input type="submit" name="send" class="submit-btn" value="Run" /></td>
+					</tr>
+					<tr><td colspan="2">Key : <input type="text" name="key" class="key" placeholder="key"/></td></tr>
+					<tr><td colspan="2"><span id="loadQueryResult"></span></td></tr>
+				</table>
+			</form>
+		</td></tr>
+		<tr><td colspan="2">
+			<form id="authRedisConn" class="authRedisConn" action="#" method="post">
+				<table style="width:100%;">
+					<tr><td style="white-space:nowrap;"><b>Specify password : </b></td>
+						<td style="width:100%;"><input type="submit" name="send" class="submit-btn" value="Run"/></td>
+					</tr>
+					<tr><td colspan="2">Password : <input type="password" name="password" class="password" placeholder="password"/></td></tr>
+					<tr><td colspan="2"><span id="authRedisResult"/></td></tr>
+				</table>
+			</form>
+		</td></tr>
+	</table>		
+</div>

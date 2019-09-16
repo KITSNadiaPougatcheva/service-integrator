@@ -1,0 +1,55 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="container request p-3 mb-2 bg-light text-dark">
+
+	<table class="table table-sm table-bordered">
+		<tr>
+			<td><div class="data-source"></div></td>
+			<td><div class="service-type"></div></td>
+		</tr>
+		<tr>
+			<td><div class="connection-state"></div></td>
+			<td><div class="db-name"></div></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2"><div class="table-list">
+				Tables :
+				<ul class="list-group table-list">
+				</ul>
+			</div></td>
+		</tr>
+		<tr>
+			<td colspan="2"><div class="schema-list">
+				Schemas :
+				<ul class="list-group schema-list">
+				</ul>
+			</div></td>
+		</tr>
+		<tr> <td colspan="2">
+			<form id="formQueryToPostgre" class="query" action="#" method="post">
+			Query (limit 20 rows) <input type="submit" name="submit" class="submit-btn" value="Run" />
+			<span><a href="https://postgrespro.ru/docs/postgresql/9.4/sql-commands" target="_blank">>>Postgres for ref.</a></span>
+			<textarea id="queryToPostgre" name="query" class="form-control queryToPostgre" placeholder="query"></textarea>
+			</form>
+		</td>
+		</tr>
+		<tr>
+			<td width="30%">Result</td><td><div id="queryResult"></div></td>
+		</tr>
+
+		<tr>
+			<td colspan="2">
+				<form id="formSelectFromTablePostgre" class="query" action="#" method="post">
+						Table (default limit 20 rows) <input type="submit" name="submit" class="submit-btn" value="Run" />
+						<input type="text" name="scheme" class="form-control scheme" placeholder="scheme"/>
+						<input type="text" name="table" class="form-control table" placeholder="table"/>
+						Limit : <input type="text" name="limit" class="limit" value="20" style="width:30%;"/>
+						Offset : <input type="text" name="offset" class="offset" value="0" style="width:30%;"/>
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td width="30%">Result</td><td><div id="selectTableResult"></div></td>
+		</tr>
+	</table>
+</div>

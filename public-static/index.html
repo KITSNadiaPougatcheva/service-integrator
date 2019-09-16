@@ -1,0 +1,109 @@
+<!Doctype html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+	
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/jquery-form/form@4.2.2/dist/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+	<title>Service Integrator</title>
+	</head>
+	<body>
+	<!-- Image and text -->
+		
+	<div  >
+	<table width="90%">
+	<tr><td>
+	<nav class="navbar navbar-dark bg-dark">
+		<table width="100%"><tr>
+			<td><a class="navbar-brand" href="#">
+			DevOps Service-Integrator</a></td>
+			<td align="right"><small class="login-form">
+			<form id="authFrom" >
+					<label class="text-light" for="username">Username</label>
+					<input type="Login" id="username" name="username"  placeholder="Username"><br/>
+					<label class="text-light" for="pswd">Password</label>
+					<input type="password" id="pswd" name="password" placeholder="Password">
+				  	<button type="submit" class="btn btn-primary">>></button>
+			</form>
+			</small><small class="greeting text-light"></small></td>
+			</tr>
+		</table>
+	</nav>
+
+	<table class="table">
+		<thead class="thead-light">
+		<tr>
+		  <th scope="col" width="20%"><table width="100%"><tr><td>#Datasources</td></tr></table></th>
+		  <th scope="col">
+				<table width="100%"><tr>
+					<td align="left">#Operations</td>
+					<td  style="border-left: 1px solid;text-align: center;"><a class="download-datasources" title="Download Datasources" href="#">D</a></td>
+					<td  style="border-left: 1px solid;text-align: center;">
+						<form id="uploadFileForm" method="post" enctype="multipart/form-data">
+						<a class="upload-datasources" title="Upload Datasources" href="#">U</a>
+						<input type="file" accept="text/json" name="file" id="upload-file" style="display:none"/>
+					</form>
+					</td>
+				</tr></table>
+			</th>
+		</tr>
+		</thead>
+		
+		<tr>
+			<td>
+				<table>
+				<tr>
+				<td>
+					<form id="addDataSourceForm">
+						<div class="form-group">
+							<label for="createDataSourceTypeSelect">Select service type</label>
+							<select class="form-control" id="createDataSourceTypeSelect">
+							</select>
+						 </div>
+						  <button type="submit" class="add-data-source btn btn-primary">Add datasource</button>
+					</form>
+				</td>
+				</tr>
+				<tr><td>
+						<label for="data-source-list">Datasources :</label>
+					<div id="data-source-list" class="list-group"></div>
+				</td>
+				</tr>
+				</table>
+			</td>
+			<td>
+				<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a id="create-data-source-nav" class="nav-link service-nav" data-type="create-data-source" href="#">DataSource</a>
+				</li>
+				<li class="nav-item">
+					<a id="operations-nav" class="nav-link service-nav disabled" data-type="operations" href="#">Operations</a>
+				</li>
+				</ul>
+				<div class="service-panel" id="create-data-source-panel">
+					<div class="jumbotron data-source-create">
+					<h4>Add please data-source on the left panel</h4>
+					</div>
+				</div>
+				<div class="service-panel" style="display:none;" id="operations-panel"></div>
+				<div class="service-panel" style="display:none;" id="request-panel"></div>
+			</td>
+		</tr>
+			
+		</table>
+		
+		</td></tr>
+		</table>
+		</div>
+	</body>
+	
+<script type="text/javascript">	
+</script>	
+<script type="text/javascript" src="/static/scripts/services.js"></script>
+</html>

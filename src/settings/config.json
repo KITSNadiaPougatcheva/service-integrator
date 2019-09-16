@@ -1,0 +1,6 @@
+{
+    "secret" : "n7G4Dlki8^&",
+    "port" : 3000,
+    "users": "../settings/users.json",
+    "sessionTimeout": 900000
+}

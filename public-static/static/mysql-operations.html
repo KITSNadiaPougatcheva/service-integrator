@@ -1,0 +1,41 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="container request p-3 mb-2 bg-light text-dark">
+<form id="formQueryToMysql" class="query" action="#" method="post">
+	<table class="table table-sm table-bordered">
+		<tr>
+			<td><div class="data-source"></div></td>
+			<td><div class="service-type"></div></td>
+		</tr>
+		<tr>
+			<td><div class="connection-state"></div></td>
+			<td><div class="db-name"></div></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2"><div class="table-list">
+				Tables :
+				<ul class="list-group table-list">
+				</ul>
+			</div></td>
+		</tr>
+		<tr>
+			<td colspan="2"><div class="schema-list">
+				Schemas :
+				<ul class="list-group schema-list">
+				</ul>
+			</div></td>
+		</tr>
+		<tr> <td width="30%">Query (default limit = 20, default offest = 0) : <br/>
+			<input type="submit" name="submit" class="submit-btn" value="Run" />
+			<a href="https://dev.mysql.com/doc/refman/8.0/en/sql-syntax-data-manipulation.html" target="_blank">>>MySQL for ref.</a>
+			</td>
+			<td>
+			<input type="hidden" id="typeQueryMysql" name="type" class="form-control" value="mysql"/>
+			<textarea id="queryToMysql" name="query" class="form-control queryToMysql" placeholder="query"></textarea>
+		</td></tr>
+		<tr>
+			<td width="30%">Result</td><td><div id="queryResult"></div></td>
+		</tr>
+	</table>
+</form>
+</div>

@@ -1,0 +1,413 @@
+swagger: '2.0'
+info:
+  description: DevOps Service Integrator API
+  version: 1.0.0
+  title: DevOps Service Integrator
+  # put the contact info for your development or API team
+  contact:
+    email: nadia_pougatcheva@epam.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+schemes:
+- https
+- http
+consumes:
+- application/json
+- application/x-www-form-urlencoded
+produces:
+- application/json
+- text/html
+
+tags:
+- name: service-integrator-api
+  description: Open Integration tool for variety of DevOps services
+  
+securityDefinitions:
+  APIKeyHeader:
+    type: apiKey
+    in: header
+    name: x-access-token
+
+paths:
+  /auth:
+    post:
+      summary: forms authentication
+      operationId: auth
+      description: forms authentication with token result
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: "object"
+          properties:
+            username:
+              type: string
+            password:
+              type: string
+      responses:
+        200:
+          description: user authenified successfully
+          schema:
+            type: object
+            required:
+            - username
+            - token
+            properties:
+              username:
+                type: string
+                example: Hanna
+              token:
+                type: string
+                example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+        401:
+          description: Bad username/password combination
+
+  /connect:
+    post:
+      summary: connect to DataSource
+      operationId: connect
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      parameters:
+        - in: header
+          name: x-access-token
+          type: string
+          required: false
+          description: Authorized user can connect to DataSource
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/DataSourceName"       
+      responses:
+        200:
+          description: Datasource connected successfully
+          schema:
+            $ref: "#/definitions/DataSourceResponse"
+        400:
+          description: Bad Request
+        401:
+          description: Unathorized
+        404:
+          description: Cannot establish connection
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        
+  /create-data-source:
+    post:
+      summary: create DataSource
+      operationId: create-data-source
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: "#/definitions/CreateDataSource"       
+      responses:
+        200:
+          description: DataSource created successfully
+          schema:
+            $ref: "#/definitions/DataSourceResponse"
+        400:
+          description: Bad Request
+        401:
+          description: Unathorized
+        404:
+          description: Cannot establish connection
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: Internal error
+
+  /disconnect:
+    post:
+      summary: disconnect datasource
+      operationId: disconnect
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: "#/definitions/DataSourceName"
+      responses:
+        200:
+          description: DataSource disconnected successfully
+        400:
+          description: Bad Request
+        401:
+          description: Unathorized
+        500:
+          description: Internal error
+
+  /get-services:
+    get:
+      summary: list of supported services
+      operationId: getServices
+      responses:
+        200:
+          description: DataSource disconnected successfully
+          schema:
+            $ref: "#/definitions/AllServicesResponse"
+        404:
+          description: No datasources for this session
+        500:
+          description: Internal error
+          
+  /get-data-sources:
+    get:
+      summary: list of existing DataSources for user
+      operationId: getDatasources
+      security:
+      - APIKeyHeader: []
+      responses:
+        200:
+          description: DataSource disconnected successfully
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DataSourceResponse'
+        400:
+          description: Bad Request
+        500:
+          description: Internal error
+          
+  /request:
+    post:
+      summary: run request for DataSource / connection
+      operationId: request
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: "#/definitions/DataSourceRequest"
+      responses:
+        200:
+          schema:
+            type: object
+          description: request produced successfully
+        400:
+          description: Bad Request
+        404:
+          description: Not Found
+        500:
+          description: Internal error
+      
+  /get-shemas:
+    post:
+      summary: get schemas of DB
+      operationId: getSchemas
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - in: query
+        name: type
+        required: true
+        type: string
+      - in: query
+        name: name
+        required: true
+        type: string
+      responses:
+        200:
+          schema:
+            type: object
+          description: OK
+        400:
+          description: Bad Request
+        404:
+          description: Not Found
+        500:
+          description: Internal error
+
+  /get-tables:
+    post:
+      summary: get tables of DB
+      operationId: getTables
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - in: query
+        name: type
+        required: true
+        type: string
+      - in: query
+        name: name
+        required: true
+        type: string
+      responses:
+        200:
+          schema:
+            type: object
+          description: OK
+        400:
+          description: Bad Request
+        404:
+          description: Not Found
+        500:
+          description: Internal error
+
+  /service-state/{type}/{name}:
+    get:
+      summary: current DataSource state
+      operationId: serviceState
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: type
+        in: path
+        required: true
+        type: string
+      - name: name
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/DataSourceResponse"
+          description: OK
+        400:
+          description: Bad Request
+        500:
+          description: Internal error
+
+definitions:
+
+  ErrorResponse:
+    required:
+    - err
+    properties:
+      err:
+        type: string
+        example: Cannot establish connection
+        
+
+  AllServicesResponse:
+   properties:
+    services:
+      type: array
+      items:
+        $ref: '#/definitions/ServiceResponse'
+    user:
+      type: object
+      properties:
+        username:
+          type: string
+        token:
+          type: string
+
+  ServiceResponse:
+    properties:
+      type:
+        type: string
+      script:
+        type: string
+      initialize:
+        type: string
+      frames:
+        type: object
+        
+  CreateDataSource:
+    properties:
+      type:
+        type: string
+      name:
+        type: string
+      host:
+        type: string
+      port:
+        type: string
+      dbname:
+        type: string
+      user:
+        type: string
+      password:
+        type: string
+        
+        
+  DataSourceResponse:
+    properties:
+      type:
+        type: string
+      name:
+        type: string
+      host:
+        type: string
+      port:
+        type: string
+      dbname:
+        type: string
+      user:
+        type: string
+      connected:
+        type: boolean
+        
+  DataSourceName:
+    properties:
+      type:
+        type: string
+      name:
+        type: string
+
+  DataSourceRequest:
+    properties:
+      type:
+        type: string
+      name:
+        type: string
+      operation:
+        type: string
+      offset:
+        type: integer
+      limit:
+        type: integer
+      query:
+        type: string
+      queue:
+        type: string
+      msg:
+        type: string
+      key:
+        type: string
+      value:
+        type: string
+      command:
+        type: string
+      
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /KITSNadiaPougatcheva/SI4/1.0.0

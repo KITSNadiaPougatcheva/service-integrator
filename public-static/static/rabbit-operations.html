@@ -1,0 +1,63 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="container request p-3 mb-2 bg-light text-dark">
+	<table class="table table-sm">
+		<tr>
+			<td><div class="data-source"></div></td>
+			<td><div class="service-type"></div></td>
+		</tr>
+		<tr>
+			<td><div class="connection-state"></div></td>
+			<td><div class="db-name"></div></td>
+		</tr>
+		<tr>
+			<td colspan="2"><div class="table-list">
+				Consumed Queues : <span id="queueList"></span>
+			</div></td>
+		</tr>
+
+		<tr><td colspan="2">
+			<form id="sendRabbitMessage" class="sendRabbitMessage" action="#" method="post">
+				<table>
+					<tr><td style="white-space:nowrap;"><b>Producer : </b>Specify queue and message text : </td>
+						<td style="width:100%;"><input type="submit" name="send" class="submit-btn" value="Run"/></td>					
+					</tr>
+					<tr><td colspan="2">Queue : <input type="text" name="queue" class="queue" placeholder="queue"/></td></tr>
+					<tr><td colspan="2">Message : <input type="text" name="msg" class="msg"  placeholder="msg"/></td></tr>
+					<tr><td colspan="2"><div id="setQueryResult"></div></td></tr>
+				</table>
+			</form>
+		</td></tr>
+		<tr><td colspan="2">
+			<form id="startConsumeMessages" class="startConsumeMessages" action="#" method="post">
+				<table>
+					<tr><td style="white-space:nowrap;"><b>Consumer : </b>Specify queue to start consumer :</td>
+						<td style="width:100%;"><input type="submit" name="send" class="submit-btn" value="Run"/></td>
+					</tr>
+					<tr><td colspan="2">Queue : <input type="text" name="queue" class="queue" placeholder="queue"/></td></tr>
+					<tr><td colspan="2"><div id="startConsumerQueryResult"></div></td></tr>
+				</table>
+			</form>
+		</td></tr>
+		<tr><td colspan="2">
+			<form id="getConsumedMessages" class="getConsumedMessages" action="#" method="post">
+				<table>
+					<tr><td style="white-space:nowrap;"><b>Specify queue to get all consumed messages : </b></td>
+						<td style="width:100%;"><input type="submit" name="send" class="submit-btn" value="Run"/></td>
+					</tr>
+					<tr><td>Queue : <input type="text" name="queue" class="queue" placeholder="queue"/></td></tr>
+					<tr><td><div id="getConsumedResult"></div></td></tr>
+				</table>
+			</form>
+		</td></tr>
+		<tr><td colspan="2">
+				<form id="getQueuesToConsume" class="getQueuesToConsume" action="#" method="post">
+					<table>
+						<tr><td style="white-space:nowrap;"><b>Get consumed queues : </b></td>
+							<td style="width:100%;"><input type="submit" name="send" class="submit-btn" value="Run"/></td>
+						</tr>
+						<tr><td><div id="getQueuesResult">Queues : </div></td></tr>
+					</table>
+				</form>
+		</td></tr>
+</table>
+</div>

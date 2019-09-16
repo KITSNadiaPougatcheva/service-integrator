@@ -1,0 +1,6 @@
+{"mongo-Mongoq":{"name":"Mongoq","host":"localhost","port":"27017","dbname":"testdb","user":"testuser","password":"1q2w3e4r5t","type":"mongo","connected":false},
+"rabbitmq-Rabbit1":{"name":"Rabbit1","host":"localhost","port":"5672","dbname":"","user":"","type":"rabbitmq","connected":true},
+"redis-RedisAdmin":{"name":"RedisAdmin","host":"localhost","port":"7001","dbname":"","user":"","password":"","type":"redis","connected":true},
+"mysql": {"name":"MySQL_admin","host":"localhost","port":"3306","dbname":"sakila","user":"testuser","password":"1q2w3e4r5t","type":"mysql","connected":true},
+"postgre": {"name":"Postgres_admin","host":"localhost","port":"5432","dbname":"testdb","user":"testuser","password":"1q2w3e4r5t","type":"postgre","connected":true}
+}

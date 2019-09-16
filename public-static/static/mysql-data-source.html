@@ -1,0 +1,49 @@
+<meta http-equiv="Pragma" content="no-cache">
+<ul class="list-group">
+    <li class="list-group-item">
+    <div class="container p-3 mb-2 bg-light text-dark">
+    <form id="create-data-source-form" class="create-data-source" action="#" method="post">
+        <h5 class="display-8">Specify connection parameters for selected resource type : </h5>
+        <h4 class="display-7">My SQL</h4>
+        <div class="dataSourceMsg" style="word-break:break-all;"></div>
+    
+        <table class="table table-sm">
+            <tr> <td width="30%">name</td><td><input type="text" name="name" class="name" placeholder="name"/></td></tr>
+            <tr> <td>host</td><td><input type="text" name="host" class="host" placeholder="host"/></td></tr>
+            <tr> <td>port</td><td><input type="text" name="port" class="port" placeholder="port" value="3306"/></td></tr>
+            <tr> <td>DB name</td><td><input type="text"  name="dbname" class="dbname" placeholder="dbname"/></td></tr>
+            <tr> <td>user</td><td><input type="text"  name="user" class="user" placeholder="user"/></td></tr>
+            <tr> <td>password</td><td><input type="password"  name="password"  placeholder="password"/></td></tr>
+            <tr> <td>&nbsp;</td><td>
+                <input type="hidden"  name="type" class="form-control" value="mysql"/>
+                <input type="submit" name="submit" class="submit-btn" value="Save Data Source" />
+            </td></tr>
+        </table>
+    </form>
+    </div>
+    </li>
+	
+    <li class="list-group-item">
+    <div class="container p-3 mb-2 bg-light text-dark">
+        <table>
+			<tr>
+			<td><div class="connectionStateMsg">State : Not Connected</div></td>
+			<td>
+				<form id="connectMysql" class="connect" action="#" method="post">
+                <input type="hidden" name="type" class="type form-control" value="mysql"/>
+                <input type="hidden" name="name" class="name form-control" value=""/>
+                <input type="submit" name="submit" class="submit-btn" value="Connect" />
+				</form>
+            </td>
+            <td>
+				<form id="disconnectMysql" class="disconnect" action="#" method="post">
+                <input type="hidden" name="name" class="form-control name" value=""/>
+                <input type="hidden"  name="type" class="form-control type" value="mysql"/>
+                <input type="submit" name="submit" class="submit-btn" value="Disconnect" />
+				</form>
+            </td></tr>
+		</table>
+    </div>
+    </li>
+</ul>
+    
